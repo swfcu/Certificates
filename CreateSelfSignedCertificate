@@ -1,0 +1,16 @@
+$Path = "$Home\Desktop\codeSignCert.pfx"
+
+$Password = Read-Host -Prompt 'Enter new password to protect certificate' -AsSecureString
+
+
+New-SelfSignedCertificate -CertStoreLocation cert:\currentuser\my `
+-Subject "CN=SWFCU Code Signing" `
+-KeyAlgorithm RSA `
+-KeyLength 2048 `
+-Provider  "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+-KeyExportPolicy Exportable `
+-KeyUsage DigitalSignature `
+-Type CodeSigningCert `
+-FriendlyName "SWFCU Code Signing" `
+-NotAfter (Get-Date).AddYears(10) `
+| Export-PfxCertificate -Password $Password -FilePath $Path
