@@ -2,7 +2,6 @@ $Path = "$Home\Desktop\codeSignCert.pfx"
 
 $Password = Read-Host -Prompt 'Enter new password to protect certificate' -AsSecureString
 
-
 New-SelfSignedCertificate -CertStoreLocation cert:\currentuser\my `
 -Subject "CN=SWFCU Code Signing" `
 -KeyAlgorithm RSA `
